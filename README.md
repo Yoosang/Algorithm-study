@@ -1,2 +1,2 @@
-# Algorithm-study
-study
+# Algorithm study
+Algorithm study solving by C++
