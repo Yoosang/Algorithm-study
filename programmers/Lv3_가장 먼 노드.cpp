@@ -2,7 +2,6 @@
 #include <vector>
 #include <queue>
 #include <algorithm>
-#include <iostream>
 
 using namespace std;
 
@@ -34,13 +33,6 @@ int solution(int n, vector<vector<int>> edge) {
 	queue<Node> q;
 	vector<vector<int>> graph = makeGraph(n, edge);
 
-	for (int i = 0; i < graph.size(); i++) {
-		for (int j = 0; j < graph[i].size(); j++) {
-			cout << graph[i][j] << " ";
-		}
-		cout << '\n';
-	}
-
 	q.push({ 0,0 });
 	visited[0] = true;
 
@@ -63,20 +55,5 @@ int solution(int n, vector<vector<int>> edge) {
 			}
 		}
 	}
-	cout << answer << endl;
 	return answer;
-}
-
-int main() {
-	vector<vector<int>> input;
-
-	input.push_back({ 3,6 });
-	input.push_back({ 4, 3 });
-	input.push_back({ 3, 2 });
-	input.push_back({ 1, 3 });
-	input.push_back({ 1, 2 });
-	input.push_back({ 2, 4 });
-	input.push_back({ 5, 2 });
-	solution(6, input);
-	return 0;
 }
