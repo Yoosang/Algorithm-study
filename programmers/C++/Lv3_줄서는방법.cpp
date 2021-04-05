@@ -1,6 +1,5 @@
 #include <string>
 #include <vector>
-#include <iostream>
 
 using namespace std;
 
@@ -29,14 +28,5 @@ vector<int> solution(int n, long long k) {
         n--;
     }
 
-    for(int i = 0; i < answer.size(); i++){
-        cout << answer[i] << endl;
-    }
-
     return answer;
-}
-
-int main(){
-    vector<int> a = solution(4, 24);
-    return 0;
 }
