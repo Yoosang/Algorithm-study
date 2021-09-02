@@ -1,0 +1,58 @@
+/**
+프로그래머스 Dynamic Programming
+N으로 표현 (Level 3)
+출처: https://programmers.co.kr/learn/courses/30/lessons/42895?language=java
+*/
+
+package programmers;
+
+import java.util.ArrayList;
+import java.util.TreeSet;
+
+public class Solution_DP1 {
+
+    public static int MINIMUM_VAL = 8;
+
+    public int solution(int N, int number) {
+        int answer = -1;
+        int mulNum = N;
+
+        if(N == number){
+            return 1;
+        }
+
+        ArrayList<TreeSet<Integer>> numList = new ArrayList<>();
+        for(int i = 0; i <= MINIMUM_VAL; i++){
+            numList.add(new TreeSet<>());
+        }
+
+        numList.get(1).add(N);
+
+        for(int i = 2; i <= MINIMUM_VAL; i++){
+            mulNum = (mulNum * 10) + N;
+            numList.get(i).add(mulNum);
+
+            for(int j = 1; j < i; j++){
+
+                for(int val1 : numList.get(j)){
+                    for(int val2 : numList.get(i - j)){
+                        numList.get(i).add(val1 + val2);
+                        numList.get(i).add(val1 - val2);
+                        numList.get(i).add(val1 * val2);
+                        if(val2 != 0){
+                            numList.get(i).add(val1 / val2);
+                        }
+
+                    }
+                }
+            }
+
+            if(numList.get(i).contains(number)){
+                return i;
+            }
+        }
+
+        return answer;
+    }
+
+}
